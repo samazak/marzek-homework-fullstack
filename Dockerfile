@@ -5,7 +5,7 @@ RUN npm ci
 COPY frontend/ ./
 RUN npm test && npm run build
 
-FROM gradle:8.14.3-jdk21 AS backend
+FROM gradle:9.7.1-jdk21 AS backend
 WORKDIR /workspace
 COPY backend/build.gradle backend/settings.gradle ./
 COPY backend/src/ ./src/
