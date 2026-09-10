@@ -1,0 +1,29 @@
+server:
+  address: ${SERVER_ADDRESS:127.0.0.1}
+  port: ${PORT:8080}
+  shutdown: graceful
+  error:
+    include-message: never
+    include-stacktrace: never
+spring:
+  application:
+    name: trade-finance-demo
+  datasource:
+    url: ${DB_URL:jdbc:oracle:thin:@localhost:1521/FREEPDB1}
+    username: ${DB_USER:trade_finance}
+    password: ${DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 5
+      connection-timeout: 10000
+      data-source-properties:
+        oracle.jdbc.ReadTimeout: 20000
+        oracle.net.CONNECT_TIMEOUT: 10000
+  jdbc:
+    template:
+      query-timeout: 15
+  security:
+    user:
+      name: ${APP_USER:reviewer}
+      # Dev-only fallback; the prod profile (application-prod.yml) requires APP_PASSWORD
+      # with no default, so a prod deployment missing it fails to start.
+      password: ${APP_PASSWORD:reviewer}

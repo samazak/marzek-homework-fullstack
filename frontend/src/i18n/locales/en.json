@@ -1,0 +1,66 @@
+{
+  "brand": {
+    "name": "Trade Finance Demo",
+    "signOut": "Sign out",
+    "signOutFailed": "Sign out failed. Please try again."
+  },
+  "intro": {
+    "eyebrow": "Oracle · Java · Vue",
+    "title": "Trade Finance Demo",
+    "description": "Age description lookup, π calculation, and unpaid invoice balances, backed by Oracle PL/SQL."
+  },
+  "footer": {
+    "text": "Trade Finance Demo · Oracle PL/SQL and Java for the Trade Finance Baltics team."
+  },
+  "errors": {
+    "requestFailed": "Request failed."
+  },
+  "login": {
+    "eyebrow": "Restricted access",
+    "title": "Sign in",
+    "description": "Sign in to look up ages, run the π calculation, and view unpaid invoices.",
+    "username": "Username",
+    "password": "Password",
+    "submit": "Sign in",
+    "submitting": "Signing in…"
+  },
+  "age": {
+    "eyebrow": "Task 01 · Table lookup",
+    "title": "An age, in words",
+    "description": "Find the description for any nonnegative age. Thresholds and text come from Oracle.",
+    "label": "Age in years",
+    "submit": "Describe age",
+    "submitting": "Looking up…"
+  },
+  "pi": {
+    "eyebrow": "Task 02 · BBP series",
+    "title": "Calculate π",
+    "description": "Calculate π to a given precision. Each successful calculation replaces the saved intermediate results.",
+    "label": "Precision",
+    "submit": "Calculate π",
+    "submitting": "Calculating…",
+    "details": "Intermediate results",
+    "columns": {
+      "iteration": "Iteration",
+      "partialSum": "Partial sum"
+    }
+  },
+  "invoices": {
+    "eyebrow": "Task 03 · Unpaid balances",
+    "title": "Invoices to follow up",
+    "description": "Unpaid and partially paid invoices, with payments totalled in the invoice currency.",
+    "submit": "Refresh invoices",
+    "submitting": "Loading…",
+    "empty": "No unpaid invoices found.",
+    "caption": "Unpaid invoices. Click a column heading to sort.",
+    "nextPage": "Next page",
+    "columns": {
+      "invoice": "Invoice",
+      "date": "Date",
+      "currency": "Currency",
+      "amount": "Amount",
+      "paid": "Paid",
+      "outstanding": "Unpaid"
+    }
+  }
+}

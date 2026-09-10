@@ -1,0 +1,25 @@
+# Persistent local Oracle instance for `gradle bootRun` / `npm run dev`.
+# For disposable CI-style verification, use compose.verify.yml instead.
+services:
+  oracle:
+    image: gvenzl/oracle-free:23.26.2-slim
+    container_name: trade-finance-oracle-dev
+    environment:
+      ORACLE_PASSWORD: ${DB_SYS_PASSWORD:?Set DB_SYS_PASSWORD}
+      APP_USER: ${DB_USER:-trade_finance}
+      APP_USER_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD}
+    shm_size: 1gb
+    ports:
+      - "127.0.0.1:1521:1521"
+    volumes:
+      - oracle-dev-data:/opt/oracle/oradata
+      - ./backend/database:/database:ro
+      - ./backend/scripts:/container-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "healthcheck.sh"]
+      interval: 10s
+      timeout: 5s
+      retries: 60
+      start_period: 60s
+volumes:
+  oracle-dev-data:

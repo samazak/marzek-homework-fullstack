@@ -1,0 +1,17 @@
+.work/
+.gradle/
+.gradle-cache/
+**/build/
+**/bin/
+**/node_modules/
+**/dist/
+**/coverage/
+**/playwright-report/
+**/test-results/
+.env
+*.log
+.idea/
+*.iml
+.claude/
+.dev-oracle-pw
+CLAUDE.md

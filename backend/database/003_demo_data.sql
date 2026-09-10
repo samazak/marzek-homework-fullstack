@@ -1,0 +1,11 @@
+-- Synthetic data only. Expected unpaid IDs: 1 and 2.
+INSERT INTO invoice VALUES (1, DATE '2026-01-10', 120, 'EUR');
+INSERT INTO invoice VALUES (2, DATE '2026-01-11', 200, 'EUR');
+INSERT INTO invoice VALUES (3, DATE '2026-01-12', 100, 'USD');
+INSERT INTO invoice VALUES (4, DATE '2026-01-13', 50, 'EUR');
+INSERT INTO invoice VALUES (5, DATE '2026-01-14', 0, 'EUR');
+INSERT INTO payment VALUES (1, DATE '2026-01-12', 50, 'EUR', 2);
+INSERT INTO payment VALUES (2, DATE '2026-01-13', 25, 'EUR', 2);
+INSERT INTO payment VALUES (3, DATE '2026-01-13', 100, 'USD', 3);
+INSERT INTO payment VALUES (4, DATE '2026-01-14', 60, 'EUR', 4);
+COMMIT;

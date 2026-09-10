@@ -1,0 +1,44 @@
+# Disposable Oracle verification. Credentials come from an ignored environment file.
+services:
+  oracle:
+    image: gvenzl/oracle-free:23.26.2-slim
+    environment:
+      ORACLE_PASSWORD: ${VERIFY_DB_PASSWORD:?Set VERIFY_DB_PASSWORD}
+      APP_USER: trade_finance_test
+      APP_USER_PASSWORD: ${VERIFY_DB_PASSWORD:?Set VERIFY_DB_PASSWORD}
+    shm_size: 1gb
+    volumes:
+      - ./backend/database:/database:ro
+      - ./backend/scripts:/container-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "healthcheck.sh"]
+      interval: 10s
+      timeout: 5s
+      retries: 60
+      start_period: 60s
+  tests:
+    build:
+      context: .
+      target: backend
+    environment:
+      ORACLE_TEST_URL: jdbc:oracle:thin:@oracle:1521/FREEPDB1
+      ORACLE_TEST_USER: trade_finance_test
+      ORACLE_TEST_PASSWORD: ${VERIFY_DB_PASSWORD:?Set VERIFY_DB_PASSWORD}
+    depends_on:
+      oracle:
+        condition: service_healthy
+    command: ["gradle", "--no-daemon", "oracleTest"]
+  app:
+    profiles: ["app"]
+    image: trade-finance-demo:local
+    environment:
+      DB_URL: jdbc:oracle:thin:@oracle:1521/FREEPDB1
+      DB_USER: trade_finance_test
+      DB_PASSWORD: ${VERIFY_DB_PASSWORD:?Set VERIFY_DB_PASSWORD}
+      APP_USER: reviewer
+      APP_PASSWORD: ${VERIFY_DB_PASSWORD:?Set VERIFY_DB_PASSWORD}
+    ports:
+      - "127.0.0.1:18080:8080"
+    depends_on:
+      oracle:
+        condition: service_healthy

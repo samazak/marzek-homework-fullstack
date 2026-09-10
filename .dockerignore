@@ -1,0 +1,9 @@
+.git
+.work
+.gradle
+**/node_modules
+**/dist
+**/build
+**/test-results
+.env
+*.docx

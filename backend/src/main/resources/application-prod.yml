@@ -1,0 +1,19 @@
+server:
+  servlet:
+    session:
+      timeout: 15m
+      cookie:
+        secure: true
+        http-only: true
+        same-site: lax
+spring:
+  security:
+    user:
+      # No default: missing APP_PASSWORD must fail startup rather than fall back to the
+      # reviewer/reviewer credential baked into the base application.yml.
+      password: ${APP_PASSWORD}
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
