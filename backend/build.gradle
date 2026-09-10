@@ -3,7 +3,7 @@ buildscript {
     dependencies {
         // Flyway's Oracle support and JDBC driver live on the plugin's own classpath,
         // separate from the application dependencies below.
-        classpath 'org.flywaydb:flyway-database-oracle:13.4.0'
+        classpath 'org.flywaydb:flyway-database-oracle:13.5.0'
         classpath 'com.oracle.database.jdbc:ojdbc11:23.26.3.0.0'
     }
 }
@@ -11,7 +11,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.5.16'
     id 'io.spring.dependency-management' version '1.1.7'
-    id 'org.flywaydb.flyway' version '13.4.0'
+    id 'org.flywaydb.flyway' version '13.5.0'
     id 'org.owasp.dependencycheck' version '13.0.0'
 }
 
